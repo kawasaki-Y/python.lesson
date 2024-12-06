@@ -1,9 +1,9 @@
 import streamlit as st
-import openai
+# import openai
 import datetime
 
-# OpenAI APIキーの設定
-openai.api_key = "YOUR_OPENAI_API_KEY"
+# # OpenAI APIキーの設定
+# openai.api_key = "YOUR_OPENAI_API_KEY"
 
 # ページ設定
 st.set_page_config(
@@ -13,7 +13,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# CSSでおしゃれなデザイン
+# CSSデザイン
 st.markdown(
     """
     <style>

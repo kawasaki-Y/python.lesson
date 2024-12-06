@@ -1,8 +1,8 @@
 import streamlit as st
-import openai
+# import openai
 
-# OpenAI APIキーの設定
-openai.api_key = "YOUR_OPENAI_API_KEY"
+# # OpenAI APIキーの設定
+# openai.api_key = "YOUR_OPENAI_API_KEY"
 
 # ページ設定
 st.set_page_config(page_title="Page1: 事業アイデア", page_icon="💡", layout="wide")
