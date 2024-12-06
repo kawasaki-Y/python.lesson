@@ -1,196 +1,85 @@
 import streamlit as st
-import pandas as pd
-
-st.write("hello daisy")
-
-st.write("hello :green[daisy]")
-
-st.title("hello daisy")
-
-st.title("hello daisy  \U0001F458　")
-
-st.write(
-  pd.DataFrame(
-    {
-      "first column": [1,2,3,4],
-      "second column": [10,20,30,40],
-    }
-  )
-)
-
-st.link_button("Click here","https://www.mindmeister.com/app/folders")
-
-st.header("Love sick daisy", divider = "rainbow")
-
-code = """print("daisy")"""
-st.code(code, language="python")
-
-agree = st.checkbox("I agree")
-if agree:
-    st.write("Okay")
-
-# st.multiselect(
-#     "好きな色は何ですか？",
-#     ["白","黒","ピンク"]
-# )
-
-options = st.multiselect(
-    "好きな色は何ですか？",
-    ["白","黒","ピンク"]
-)
-
-st.write("あなたが選んだ色は:",options)
-
-options = st.radio(
-    "好きな色は何ですか？",
-    ["白","黒","ピンク"]
-)
-
-st.write("あなたが選んだ色は:",options)
-
-# 修正できるフレームワーク
-df = pd.DataFrame(
-    {
-        "colors": ["白", "黒", "ピンク"],
-        "rating": [4, 5, 3],
-    }
-)
-
-# Streamlitのデータエディタ
-edited_df = st.data_editor(df)
-
-# "rating"が最大の行を取得し、その"colors"列の値を取得
-max_rating_color = edited_df.loc[edited_df["rating"].idxmax(), "colors"]
-
-# 結果を表示
-st.write(max_rating_color)
-
-# 修正できるフレームワーク
-df = pd.DataFrame(
-    {
-        "colors": ["白", "黒", "ピンク"],
-        "rating": [4, 5, 3],
-        "mark": [True, False, True]  # 初期値をTrue/Falseで設定
-    }
-)
-
-# Streamlitのデータエディタを使って編集可能に
-edited_df = st.data_editor(
-    df,
-    use_container_width=True  # データエディタを幅いっぱいに表示
-)
-
-# "rating"が最大の行を取得し、その"colors"列の値を取得
-max_rating_color = edited_df.loc[edited_df["rating"].idxmax(), "colors"]
-
-edited_df = edited_df[edited_df["mark"] == True]
-
-# 結果を表示
-st.write("Ratingが最大の色:", max_rating_color)
-
-# # チェックボックス状態を確認
-# selected_colors = edited_df.loc[edited_df["mark"], "colors"]
-# st.write("チェックされた色:", selected_colors.tolist())
-
-# ダウンロードボタン
-csv = edited_df.to_csv(index=False).encode("utf-8")
-
-st.download_button(
-    label="CSVをダウンロード",
-    data=csv,
-    file_name="sample_df.csv",
-    mime="text/csv"
-)
-
-# プログレスバー表示
-df = pd.DataFrame(
-    {
-        "sales": [20, 55, 100, 80],
-        "progress_sales": [20, 55, 100, 80],
-    }
-)
-
-st.data_editor(
-    df,
-      column_config={
-            "progress_sales":st.column_config.ProgressColumn(
-              min_value=0,
-              max_value=100,
-            ),
-    },
-)
-
-# 修正したデータフレーム
-df = pd.DataFrame(
-    {
-        "date": pd.date_range(start="2023-01-01", periods=6, freq="D"),
-        "sales": [0, 4, 26, 2, 50, 0]
-    }
-)
-
-# Streamlitのデータエディタでデータ表示
-st.data_editor(df)
-
-# 時系列データのグラフ表示
-st.line_chart(df.set_index("date"))
-
-# スライダー
-age = st.slider("あなたは何歳ですか？",0,130,40)
-st.write("私は", age, "差異です")
-
-# 日付選択
+import openai
 import datetime
-date = st.date_input("あなたが生まれました",datetime.date(2000, 1, 1))
-st.write("私は", date, "に生まれました")
 
-# ユーザーの自由記述
-text = st.text_input("入力してください", "毛呂和哉")
-st.write(text)
+# OpenAI APIキーの設定
+openai.api_key = "YOUR_OPENAI_API_KEY"
 
-# カラムを分ける
-col1, col2 = st.columns(2)
-with col1:
-    st.title("Column1")
-    st.write("これはカラムの1です")
-with col2:
-    st.title("Column2")
-    st.write("これはカラムの2です")
+# ページ設定
+st.set_page_config(
+    page_title="経営相談ツール",
+    page_icon="💡",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
-# タブを分ける
-tab1, tab2 = st.tabs(["tab1", "tab2"])
-with tab1:
-    st.title("Tab1")
-    st.write("これはタブの1です")
-with tab2:
-    st.title("Tab2")
-    st.write("これはタブの2です")
+# CSSでおしゃれなデザイン
+st.markdown(
+    """
+    <style>
+    body {
+        background-color: #f0f8f7;
+        font-family: 'Arial', sans-serif;
+    }
+    .block-container {
+        padding: 2rem;
+        border-radius: 10px;
+        background: #eafaf9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    h1, h2, h3, h4 {
+        color: #2c5d52;
+    }
+    .stButton>button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+    }
+    .stButton>button:hover {
+        background-color: #45a049;
+        color: white;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
-# アコーディオン
-with st.expander("もっと詳しく見る"):
-    st.write("XXX")
+# ヘッダーセクション
+st.title(" 経営相談・事業計画ツール")
+st.markdown("このアプリでは、経営状況を整理し、AIを活用して事業計画の作成をサポートします。")
 
-# ポップアップ表示
-with st.popover("もっと詳しく見る"):
-    st.write("XXX")
+# OpenAI 壁打ちセクション
+st.header(" 経営相談 AI 壁打ち")
+user_input = st.text_area("相談したい内容を入力してください", placeholder="例: 新規市場参入を検討しています。アドバイスをください。")
 
-# サイドバー表示
+if st.button("AIに相談する"):
+    if user_input.strip():
+        with st.spinner("AIが回答を考えています..."):
+            response = openai.ChatCompletion.create(
+                model="gpt-4",  # または "gpt-3.5-turbo"
+                messages=[
+                    {"role": "system", "content": "あなたは経営の専門家です。経営相談にアドバイスを提供してください。"},
+                    {"role": "user", "content": user_input},
+                ],
+                temperature=0.7,
+                max_tokens=150,
+            )
+        st.markdown("### AIからのアドバイス")
+        st.write(response["choices"][0]["message"]["content"].strip())
+    else:
+        st.warning("相談内容を入力してください。")
+
+# サイドバー
 with st.sidebar:
-    st.title("XXX")
-    st.write("XXX")
+    st.header("🔍 メニュー")
+    st.markdown("[Page1: 事業アイデアと目標設定](page1)")
+    st.markdown("[Page2: 市場分析と競合研究](page2)")
+    st.markdown("[Page3: 財務計画とシミュレーション](page3)")
+    st.markdown("---")
+    st.subheader("📅 スケジュール")
+    st.date_input("重要な日程", datetime.date.today())
 
-# notification
-agree = st.checkbox("同意しますか？")
-if agree:
-  st.toast("Thank you", icon="👍")
-
-# エフェクト
-birthday = st.checkbox("今日はあなたの誕生日ですか？")
-if birthday:
-  st.toast("誕生日おめでとう！", icon="👍")
-  st.balloons()
-
-# 複数ページ実装
-st.page_link("app.py",label="Home", icon="👩")
-st.page_link("pages/page1.py",label="page1", icon="👩")
-st.page_link("pages/page2.py",label="page2", icon="👩")
-st.page_link("https://docs.streamlit.io/develop/api-reference",label="streamlitのAPIドキュメント", icon="👩")
+st.markdown("---")
+st.write("© 2024 経営相談ツール")
