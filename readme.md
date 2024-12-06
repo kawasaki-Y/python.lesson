@@ -38,7 +38,8 @@ https://pythonleappn-mbastedhnpz4zwkdmrdcqs.streamlit.app/~/+/
 ❷Pythonの装飾はHTMLと勝手が違い、見た目はこれまでの提出課題と比較して大幅に劣化しました。CSSやJavaScriptとの組み合わせも勉強が必要です。
 ❸OPENAIのAPIキーを使ってチャット機能を実装しようとしたのですが、環境変数変換がうまくいかなかったため見送ることにしました。ここもじっくりと取り組みたいところです。
 ❹streamlitの機能をフルに活かせば、数値データ可視化ツール作成が進むかと思いました。今回はそこまで突き詰めることができませんでしたが、じっくりと勉強したいと思います。
-❺GitHubでPythonをデプロイする場合、これまでのHTMLやJavaScriptと勝手が違うらしく、仕方が無いのでデプロイはstreamlitのサーバーで行いました。
+❺GitHubでPythonをデプロイする場合、これまでのHTMLやJavaScriptと勝手が違うらしく、仕方が無いのでデプロイはstreamlit Cloudで行いました。
+
 
 
 
