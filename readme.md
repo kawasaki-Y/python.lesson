@@ -20,7 +20,7 @@ streamlit API reference :  https://docs.streamlit.io/develop/api-reference
 
 ## ③DEMO
 
-http://192.168.3.151:8501/
+https://pythonleappn-mbastedhnpz4zwkdmrdcqs.streamlit.app/~/+/
 
 ## ④作ったアプリケーション用のIDまたはPasswordがある場合
 
