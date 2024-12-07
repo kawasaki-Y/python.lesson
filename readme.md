@@ -1,6 +1,6 @@
 ※デプロイした内容が実装した内容を反映しきれてないことが分かり、コードレビュー会はローカルホストを使用して説明します。
 ローカルホスト上では機能しているが、StreamlitCloud上ではエラーになる状態です。（提出したURLからはエラーになってしまう状態）
-
+http://localhost:8501/page3　　お手数ですがから確認してください。
 
 # ①課題番号-プロダクト名
 
@@ -17,6 +17,11 @@
 が効率的に行えるアプリケーションを今回はPythonのみで作成しようと、今週からPythonを学習しつつ図表化APIであるstreamlitを使ってます。
 
 streamlit API reference :  https://docs.streamlit.io/develop/api-reference
+streamlit Cloud : https://streamlit.io/generative-ai
+
+参考にした書籍：https://amzn.asia/d/gerIvA8
+↑
+ほとんど、この本とYOUTUBE動画に頼りました。
 
 ## ③DEMO
 
